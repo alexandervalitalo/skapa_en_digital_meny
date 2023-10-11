@@ -1,1 +1,210 @@
+[
+  {
+    "id": 1,
+    "price": [149],
+    "allergies": ["Lactose"],
+    "meatType": ["Pork"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Fläskfiléplanka",
+          "info": "Duchesse mos, rödvinssky, bearnaise och stekta grönsaker"
+        },
+        "english": {
+          "title": "Pork tenderloin plank steak",
+          "info": "Duchesse potatoes, a redwine reduction, béarnaise and fried vegetables"
+        }
+      }
+    ]
+  },
 
+  {
+    "id": 2,
+    "price": [175],
+    "allergies": ["Gluten", "Lactose"],
+    "meatType": ["Beef"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Biff Rydberg",
+          "info": "Tärnad oxfilé, potatis och gullök, serveras med dijonsenapskräm och rå äggula"
+        },
+        "english": {
+          "title": "Biff Rydberg",
+          "info": "Diced beef tenderloin, potatoes and onion, served with dijonmustard and raw egg yolk"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 3,
+    "price": [155],
+    "allergies": [""],
+    "meatType": ["Beef"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Spicy cheeseburger",
+          "info": "180 gram högrevsburgare med sallad, tomat, picklad rödlök, cheddarost med jalapeños och barbequesås i briochebröd med pommes och rökig ranch-aioli"
+        },
+        "english": {
+          "title": "Spicy cheeseburger",
+          "info": "180 gram prime rib burger with lettuce, tomato, pickled red onion, cheddar cheese with jalapeños and barbecuesause in brioche bread with fries and smokey rach-aioli"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 4,
+    "price": [155],
+    "allergies": ["Lactose"],
+    "meatType": ["Vegetarian"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Halloumi burgare",
+          "info": "Sallad, tomat, rödlök och guacamole i briochebröd med pommes och aioli"
+        },
+        "english": {
+          "title": "Halloumi burger",
+          "info": "Lettuce, tomato, red onion and guacamole in brioche bread with fries and aioli"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 5,
+    "price": [149],
+    "allergies": ["Lactose"],
+    "meatType": ["Fish"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Fish'n chips",
+          "info": "'Beer-batter' panerad torskrygg med dill-aioli, halstrad citron och pommes"
+        },
+        "english": {
+          "title": "Fish'n chips",
+          "info": "Beer-batter breaded cod loins with dill-aioli, seared lemon and fries"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 6,
+    "price": [175],
+    "allergies": [""],
+    "meatType": ["Pork", "Fish"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Husets schnitzel",
+          "info": "200 gram välbankad schnitzel 'Borås största' med citron, kapris, ansjovis, kryddsmör och rödvinssky serveras med stekt potatis"
+        },
+        "english": {
+          "title": "Schnitzel",
+          "info": "200 grams of meat 'Borås biggest' served with lemon, capers, anchovy, herb butter and a redwine reduction with fried potatoes"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 7,
+    "price": [139, 85],
+    "allergies": ["Lactose"],
+    "meatType": ["Chicken", "Pork"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Caesarsallad",
+          "info": "Varm kyckling, bacon, krutonger, parmesan samt caesardressing"
+        },
+        "english": {
+          "title": "Caesar salad",
+          "info": "Grilled chicken, bacon, croutons, parmesan and caesardressing"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 8,
+    "price": [159],
+    "allergies": ["Lactose"],
+    "meatType": ["Fish"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Laxsallad med quinoa",
+          "info": "Grillad lax med quinoa, cocktailtomater, blandsallad, morot julienne, rödlök med en vinägrett"
+        },
+        "english": {
+          "title": "Salmon salad with quinoa",
+          "info": "Grilled salmon with quinoa, cocktail tomatoes, julienne carrot, mixed salad, red onion with vinegrette"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 9,
+    "price": [169],
+    "allergies": ["Lactose"],
+    "meatType": ["Chicken"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Krämig kycklingpasta",
+          "info": "Soltorkade tomater, basilika, grönsaker och parmesan"
+        },
+        "english": {
+          "title": "Creamy chickenpasta",
+          "info": "Sundried tomatoes, basil, vegetables and parmesan"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 10,
+    "price": [189, 109],
+    "allergies": [""],
+    "meatType": ["Seafood"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Musslor àl cava",
+          "info": "Ångkokta musslor i en krämig sås gjord på cava, toppas med crème fraîche och jalapeños, serveras med pommes och aioli"
+        },
+        "english": {
+          "title": "Mussles àl cava",
+          "info": "Steamed mussels in a creamy cava sauce, topped with crème fraîche and jalapeños, served with fries and aioli"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 11,
+    "price": [259],
+    "allergies": ["Gluten"],
+    "meatType": ["Beef"],
+    "language": [
+      {
+        "swedish": {
+          "title": "Grillad oxfilé",
+          "info": "200 gram oxfilé, rödvinssås, frästa grönsaker serveras med potatisgratäng (går att få med pommes och bearnaise)"
+        },
+        "english": {
+          "title": "Grilled beef tenderloin",
+          "info": "200 gram beef tenderloin, redwine reduction, fried vegetable and potato gratin (possible with fries and bearnaise)"
+        }
+      }
+    ]
+  }
+]
