@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Digital Menu</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="./bild/lucky_duck.png" alt="Din Logotyp">
+        </div>
+        <section class="menu-controls">
+            <div class="dropdown">
+                <label for="language-select">Språk:</label>
+                <select id="language-select">
+                    <option value="svenska">Svenska</option>
+                    <option value="english">English</option>
+                </select>
+            </div>
+            <div class="dropdown">
+                <label for="sort-select">Sotera:</label>
+                <select id="sort-select">
+                    <option value="ascending">Stigande</option>
+                    <option value="descending">Fallande</option>
+                </select>
+            </div>
+        </section>
+    </div>
+    
+    <section class="filter-section">
+        <div class="filter-header">
+            <h1>Filters</h1>
+        <div class="filter-checkboxes">
+            <div class="filter-checkbox">
+                <input type="checkbox" id="filter-vegetariskt">
+                <label for="filter-vegetariskt">Vegetariskt</label>
+            </div>
+            <div class="filter-checkbox">
+                <input type="checkbox" id="filter-koett">
+                <label for="filter-koett">Kött</label>
+            </div>
+            <div class="filter-checkbox">
+                <input type="checkbox" id="filter-koett">
+                <label for="filter-koett">Kyckling</label>
+            </div>
+            <div class="filter-checkbox">
+                <input type="checkbox" id="filter-koett">
+                <label for="filter-koett">Fläsk</label>
+            </div>
+            <div class="filter-checkbox">
+                <input type="checkbox" id="filter-koett">
+                <label for="filter-koett">Fisk</label>
+            </div>
+            <div class="filter-checkbox">
+                <input type="checkbox" id="filter-koett">
+                <label for="filter-koett">Skaldjur</label>
+            </div>
+            <div class="filter-checkbox">
+                <input type="checkbox" id="filter-koett">
+                <label for="filter-koett">Gluten Free</label>
+            </div>
+            <div class="filter-checkbox">
+                <input type="checkbox" id="filter-koett">
+                <label for="filter-koett">Allergi</label>
+            </div>
+        </div>
+    </div>
+    </section>
 
+    <!-- This is where you can load menu items from JSON data -->
+    <section class="menu">
+        <!-- Menyobjekten laddas från din JSON-data och filtreras baserat på användarens val -->
+        <!-- Sample menu items can be displayed here -->
+        <!-- You can load the menu dynamically with JavaScript -->
+    </section>
+
+    <div id="json-data">
+        <p>asdasdasdasdasdasdasdasd</p><!-- Här kommer du att ladda din JSON-data senare med JavaScript -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
