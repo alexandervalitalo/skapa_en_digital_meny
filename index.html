@@ -31,9 +31,11 @@
     </div>
     
     <section class="filter-section">
-        <div class="filter-header">
-            <h1>Filter</h1>
+        
         <div class="filter-checkboxes">
+            <div class="filter-header">
+                <h2>Filter</h2>
+            </div>
             <div class="filter-checkbox">
                 <input type="checkbox" id="filter-veg">
                 <label for="filter-veg">Vegetariskt</label>
@@ -58,6 +60,9 @@
                 <input type="checkbox" id="filter-seafood">
                 <label for="filter-seafood">Skaldjur</label>
             </div>
+            <div class="filter-header" id="border-class">
+                <h2>Allergi</h2>
+            </div>
             <div class="filter-checkbox">
                 <input type="checkbox" id="filter-gluten">
                 <label for="filter-gluten">Glutenfritt</label>
@@ -67,7 +72,6 @@
                 <label for="filter-lactose">Laktosfritt</label>
             </div>
         </div>
-    </div>
     </section>
 
     <!-- This is where you can load menu items from JSON data -->
@@ -79,7 +83,7 @@
         <!-- Sample menu items can be displayed here -->
         <!-- You can load the menu dynamically with JavaScript -->
     </section>
-    
+
     <script src="script.js" type="module"></script>
 </body>
 </html>

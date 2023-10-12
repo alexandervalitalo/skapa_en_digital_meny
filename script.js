@@ -40,7 +40,6 @@ function displayDishes(dishes){
                     <h3 class="dish-title">${object.language[langNumber].title} ${object.price[0]} kr</h3>
                     <p class="dish-info">${object.language[langNumber].info}</p>
                     <br>
-                    <hr>
                 </div>
                 `
                 break;
@@ -51,7 +50,6 @@ function displayDishes(dishes){
                     <h3 class="dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]} kr</h3>
                     <p class="dish-info">${object.language[langNumber].info}</p>
                     <br>
-                    <hr>
                 </div>
                 `
                 break;
