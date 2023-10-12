@@ -69,3 +69,8 @@ body {
     margin-right: 5px; 
 }
 
+/*menu ska ändras men fick sätta in detta så länge så vi ser texten från JavaScripten*/
+.menu{
+    margin-left: 260px;
+    padding-top: 120px;
+}
