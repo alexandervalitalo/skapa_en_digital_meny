@@ -8,9 +8,21 @@ const menuUrl = "./menu.json"; //fileName to load
 const menuAllDishes = await fetchData(menuUrl); //Saves json data to local array
 
 const display = document.querySelector("#dishes-data");
+const langSelect = document.querySelector("#language-select");
 
 let currentDishes = menuAllDishes; //Copy info to another array that we what to filter
 let langNumber = 0; //sets the language to swedish
+
+//Handels language selection and display the new choosen language
+langSelect.addEventListener("change", function() {
+    if(langSelect.value == "svenska"){
+        langNumber = 0;
+    }
+    else if(langSelect.value == "english"){
+        langNumber = 1;
+    }
+    displayDishes(currentDishes);
+});
 
 //call this function to display the current filtered dishes
 function displayDishes(dishes){
@@ -28,3 +40,4 @@ function displayDishes(dishes){
     display.innerHTML = menuDisplay;
 }
 displayDishes(currentDishes); //display all dishes at start
+
