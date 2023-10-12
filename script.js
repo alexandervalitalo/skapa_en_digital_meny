@@ -4,22 +4,22 @@ async function fetchData(url){
     const data = await response.json();
     return data;
 }
-
-const menuUrl = "./menu.json"
-const menuAllDishes = await fetchData(menuUrl);
-console.log(menuAllDishes);
+const menuUrl = "./menu.json"; //fileName to load 
+const menuAllDishes = await fetchData(menuUrl); //Saves json data to local array
 
 const display = document.querySelector("#dishes-data");
 
-let currentDishes = menuAllDishes;
+let currentDishes = menuAllDishes; //Copy info to another array that we what to filter
+let langNumber = 0; //sets the language to swedish
 
+//call this function to display the current filtered dishes
 function displayDishes(dishes){
     let menuDisplay = dishes.map((object) => {
         return `
         <div class="dish">
             <br>
-            <h3>${object.language[0].title}</h3>
-            <p>${object.language[0].info}</p>
+            <h3>${object.language[langNumber].title}</h3>
+            <p>${object.language[langNumber].info}</p>
             <br>
             <hr>
         </div>
@@ -27,4 +27,4 @@ function displayDishes(dishes){
     }).join(""); 
     display.innerHTML = menuDisplay;
 }
-displayDishes(currentDishes);
+displayDishes(currentDishes); //display all dishes at start
