@@ -1,89 +1,101 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Digital Menu</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <div class="logo">
-            <img src="./bild/lucky_duck.png" alt="Din Logotyp">
+      <div class="logo">
+        <img src="./bild/lucky_duck.png" alt="Din Logotyp" />
+      </div>
+      <div>
+        <h1>Meny</h1>
+      </div>
+      <section class="menu-controls">
+        <div class="dropdown">
+          <label for="language-select">Språk:</label>
+          <select id="language-select">
+            <option value="svenska">Svenska</option>
+            <option value="english">English</option>
+          </select>
         </div>
-        <section class="menu-controls">
-            <div class="dropdown">
-                <label for="language-select">Språk:</label>
-                <select id="language-select">
-                    <option value="svenska">Svenska</option>
-                    <option value="english">English</option>
-                </select>
-            </div>
-            <div class="dropdown">
-                <label for="sort-select">Sortera:</label>
-                <select id="sort-select">
-                    <option value="unsorted">--</option>
-                    <option value="ascending">Stigande</option>
-                    <option value="descending">Fallande</option>
-                </select>
-            </div>
-        </section>
+        <div class="dropdown">
+          <label for="sort-select">Sortera:</label>
+          <select id="sort-select">
+            <option value="unsorted">Standard</option>
+            <option value="ascending">Pris stigande</option>
+            <option value="descending">Pris fallande</option>
+          </select>
+        </div>
+      </section>
     </div>
-    
+
     <section class="filter-section">
-        
-        <div class="filter-checkboxes">
-            <div class="filter-header">
-                <h2>Filter</h2>
-            </div>
-            <div class="filter-checkbox">
-                <input type="checkbox" id="filter-veg">
-                <label for="filter-veg">Vegetariskt</label>
-            </div>
-            <div class="filter-checkbox">
-                <input type="checkbox" id="filter-beef">
-                <label for="filter-beef">Nöt</label>
-            </div>
-            <div class="filter-checkbox">
-                <input type="checkbox" id="filter-chicken">
-                <label for="filter-chicken">Kyckling</label>
-            </div>
-            <div class="filter-checkbox">
-                <input type="checkbox" id="filter-pork">
-                <label for="filter-pork">Fläsk</label>
-            </div>
-            <div class="filter-checkbox">
-                <input type="checkbox" id="filter-fish">
-                <label for="filter-fish">Fisk</label>
-            </div>
-            <div class="filter-checkbox">
-                <input type="checkbox" id="filter-seafood">
-                <label for="filter-seafood">Skaldjur</label>
-            </div>
-            <div class="filter-header" id="border-class">
-                <h2>Allergi</h2>
-            </div>
-            <div class="filter-checkbox">
-                <input type="checkbox" id="filter-gluten">
-                <label for="filter-gluten">Glutenfritt</label>
-            </div>
-            <div class="filter-checkbox">
-                <input type="checkbox" id="filter-lactose">
-                <label for="filter-lactose">Laktosfritt</label>
-            </div>
+      <div class="filter-checkboxes">
+        <div class="filter">
+          <h2>Filter</h2>
+          <button>Återställ filter</button>
         </div>
+        <div class="filter-header" id="border-class">
+          <h3>Kötträtter</h3>
+        </div>
+        <div class="filter-checkbox">
+          <input type="checkbox" id="filter-veg" />
+          <label for="filter-veg">Vegetariskt</label>
+        </div>
+        <div class="filter-checkbox">
+          <input type="checkbox" id="filter-beef" />
+          <label for="filter-beef">Nöt</label>
+        </div>
+        <div class="filter-checkbox">
+          <input type="checkbox" id="filter-chicken" />
+          <label for="filter-chicken">Kyckling</label>
+        </div>
+        <div class="filter-checkbox">
+          <input type="checkbox" id="filter-pork" />
+          <label for="filter-pork">Fläsk</label>
+        </div>
+        <div class="filter-checkbox">
+          <input type="checkbox" id="filter-fish" />
+          <label for="filter-fish">Fisk</label>
+        </div>
+        <div class="filter-checkbox">
+          <input type="checkbox" id="filter-seafood" />
+          <label for="filter-seafood">Skaldjur</label>
+        </div>
+        <div class="filter-header" id="border-class">
+          <h3>Allergi</h3>
+        </div>
+        <div class="filter-checkbox">
+          <input type="checkbox" id="filter-gluten" />
+          <label for="filter-gluten">Glutenfritt</label>
+        </div>
+        <div class="filter-checkbox">
+          <input type="checkbox" id="filter-lactose" />
+          <label for="filter-lactose">Laktosfritt</label>
+        </div>
+      </div>
     </section>
 
     <!-- This is where you can load menu items from JSON data -->
     <section class="menu">
-        <div id="dishes-data">
-            <!-- Här kommer du att ladda din JSON-data senare med JavaScript -->
-        </div>  
-        <!-- Menyobjekten laddas från din JSON-data och filtreras baserat på användarens val -->
-        <!-- Sample menu items can be displayed here -->
-        <!-- You can load the menu dynamically with JavaScript -->
+      <div id="dishes-data">
+        <!-- Här kommer du att ladda din JSON-data senare med JavaScript -->
+      </div>
+      <!-- Menyobjekten laddas från din JSON-data och filtreras baserat på användarens val -->
+      <!-- Sample menu items can be displayed here -->
+      <!-- You can load the menu dynamically with JavaScript -->
     </section>
 
     <script src="script.js" type="module"></script>
-</body>
+  </body>
 </html>
