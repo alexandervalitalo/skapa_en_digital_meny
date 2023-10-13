@@ -5,35 +5,32 @@ async function fetchData(url){
     return data;
 }
 const menuUrl = "./menu.json"; //fileName to load 
-const menuAllDishes = await fetchData(menuUrl); //Saves json data to local array
+const menuAllDishes = await fetchData(menuUrl); //Saves json data to local array, await forces fetchData to be done before continuing 
 
+//DOM-data
 const display = document.querySelector("#dishes-data");
 const langSelect = document.querySelector("#language-select");
 const htmlTag = document.querySelector("html");
+const checkVeg = document.querySelector("#filter-veg");
+const checkBeef = document.querySelector("#filter-beef");
+const checkChicken = document.querySelector("#filter-chicken");
+const checkPork = document.querySelector("#filter-pork");
+const checkFish = document.querySelector("#filter-fish");
+const checkSeafood = document.querySelector("#filter-seafood");
+const checkGluten = document.querySelector("#filter-gluten");
+const checkLactose = document.querySelector("#filter-lactose");
+const clearFilter = document.querySelector("button");
 
-let currentDishes = menuAllDishes; //Copy info to another array that we what to filter
-let langNumber = 0; //sets the language to swedish
+let currentDishes = menuAllDishes; //Copy info to another array that we want to filter
+let langNumber = 0; //sets the language to swedish at start
 
-//Handels language selection and display the new choosen language
-langSelect.addEventListener("change", function() {
-    switch(langSelect.value) {
-        case "svenska":
-            langNumber = 0;
-            htmlTag.setAttribute("lang", "sv");
-            break;
-        case "english":
-            langNumber = 1;
-            htmlTag.setAttribute("lang", "en");
-            break;
-    }
-    displayDishes(currentDishes);
-});
+displayDishes(); //display all dishes at start 
 
 //call this function to display the current filtered dishes
-function displayDishes(dishes){
-    let menuDisplay = dishes.map((object) => {
-        switch(object.price.length){
-            case 1:
+function displayDishes(){
+    let menuDisplay = currentDishes.map((object) => {
+        switch(object.price.length){ //check how many prices a dish has 
+            case 1: //display if dish has only one price
                 return `
                 <div class="dish">
                     <br>
@@ -43,7 +40,7 @@ function displayDishes(dishes){
                 </div>
                 `
                 break;
-            case 2:
+            case 2: //display if dish has two prices
                 return `
                 <div class="dish">
                     <br>
@@ -54,8 +51,172 @@ function displayDishes(dishes){
                 `
                 break;
         }
-    }).join(""); 
+    }).join(""); //Removes the "," between each dish object caused by reading the json-file.
     display.innerHTML = menuDisplay;
 }
-displayDishes(currentDishes); //display all dishes at start 
 
+//handles multiple filters in the right order and displays filtered dishes
+function filterLogic(){
+    currentDishes = menuAllDishes; //reset all dishes
+
+    //filter meat choices first, if any are checked
+    if(checkVeg.checked || checkBeef.checked || checkChicken.checked || checkPork.checked || checkFish.checked || checkSeafood.checked){
+        filterMeat();
+    }
+
+    //filter gluten free choice after meat filter, if checked
+    if(checkGluten.checked){
+        filterGluten();
+    }
+
+    //filter lactose free choice last, if checked
+    if(checkLactose.checked){
+        filterLactose();
+    }
+
+    displayDishes(); 
+}
+
+//filter meat dishes
+function filterMeat(){
+    let tempDishes = currentDishes.filter((object) => {
+        if(checkVeg.checked && object.meatType[0] === "Vegetarian"){
+            return object;
+        }
+        else if(checkBeef.checked && object.meatType[0] === "Beef"){
+            return object;
+        }
+        else if(checkChicken.checked && object.meatType[0] === "Chicken"){
+            return object;
+        }
+        else if(checkPork.checked && object.meatType[0] === "Pork"){
+            return object;
+        }
+        else if(checkFish.checked && object.meatType[0] === "Fish"){
+            return object;
+        }
+        else if(checkSeafood.checked && object.meatType[0] === "Seafood"){
+            return object;
+        }
+        else if(checkPork.checked && object.meatType[1] === "Pork"){
+            return object;
+        }
+        else if(checkFish.checked && object.meatType[1] === "Fish"){
+            return object;
+        }
+    });
+    currentDishes = tempDishes; //update currentDishes to be displayed
+}
+
+//filter gluten free dishes
+function filterGluten(){
+    let tempDishes = currentDishes.filter((object) => {
+        if(checkGluten.checked && object.allergies[0] === "GlutenFree"){
+            return object;
+        }
+    });
+    currentDishes = tempDishes; //update currentDishes to be displayed
+}
+
+//filter lactose free dishes
+function filterLactose(){
+    let tempDishes = currentDishes.filter((object) => {
+        if(checkLactose.checked && object.allergies[0] === "LactoseFree"){
+            return object;
+        }
+        else if(checkLactose.checked && object.allergies[1] === "LactoseFree"){
+            return object;
+        }
+    });
+    currentDishes = tempDishes; //update currentDishes to be displayed
+}
+
+checkVeg.addEventListener("change", () => {
+    //uncheck all meat boxes if true 
+    if(checkVeg.checked){
+        checkBeef.checked = false;
+        checkChicken.checked = false;
+        checkPork.checked = false;
+        checkFish.checked = false;
+        checkSeafood.checked = false;
+    }
+    filterLogic();
+});
+
+checkBeef.addEventListener("change", () => {
+    //uncheck veg box if true 
+    if(checkBeef.checked){
+        checkVeg.checked = false;
+    }
+    filterLogic();
+});
+
+checkChicken.addEventListener("change", () => {
+    //uncheck veg box if true 
+    if(checkChicken.checked){
+        checkVeg.checked = false;
+    }
+    filterLogic();
+});
+
+checkPork.addEventListener("change", () => {
+    //uncheck veg box if true 
+    if(checkPork.checked){
+        checkVeg.checked = false;
+    }
+    filterLogic();
+});
+
+checkFish.addEventListener("change", () => {
+    //uncheck veg box if true 
+    if(checkFish.checked){
+        checkVeg.checked = false;
+    }
+    filterLogic();
+});
+
+checkSeafood.addEventListener("change", () => {
+    //uncheck veg box if true 
+    if(checkSeafood.checked){
+        checkVeg.checked = false;
+    }
+    filterLogic();
+});
+
+checkGluten.addEventListener("change", () => {
+    filterLogic();
+});
+
+checkLactose.addEventListener("change", () => {
+    filterLogic();
+});
+
+//uncheck all filterboxes and display all dishes
+clearFilter.addEventListener("click", () => {
+    checkVeg.checked = false;
+    checkBeef.checked = false;
+    checkChicken.checked = false;
+    checkPork.checked = false;
+    checkFish.checked = false;
+    checkSeafood.checked = false;
+    checkGluten.checked = false;
+    checkLactose.checked = false;
+
+    currentDishes = menuAllDishes;
+    displayDishes();
+});
+
+//Handels language selection and display the new choosen language 
+langSelect.addEventListener("change", () => {
+    switch(langSelect.value) {
+        case "svenska":
+            langNumber = 0;
+            htmlTag.setAttribute("lang", "sv");
+            break;
+        case "english":
+            langNumber = 1;
+            htmlTag.setAttribute("lang", "en");
+            break;
+    }
+    displayDishes(); 
+});
