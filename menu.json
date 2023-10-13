@@ -2,7 +2,7 @@
   {
     "id": 1,
     "price": [149],
-    "allergies": ["Lactose"],
+    "allergies": ["LactoseFree"],
     "meatType": ["Pork"],
     "language": [
       {
@@ -19,7 +19,7 @@
   {
     "id": 2,
     "price": [175],
-    "allergies": ["Gluten", "Lactose"],
+    "allergies": ["GlutenFree", "LactoseFree"],
     "meatType": ["Beef"],
     "language": [
       {
@@ -53,7 +53,7 @@
   {
     "id": 4,
     "price": [155],
-    "allergies": ["Lactose"],
+    "allergies": ["LactoseFree"],
     "meatType": ["Vegetarian"],
     "language": [
       {
@@ -70,7 +70,7 @@
   {
     "id": 5,
     "price": [149],
-    "allergies": ["Lactose"],
+    "allergies": ["LactoseFree"],
     "meatType": ["Fish"],
     "language": [
       {
@@ -104,7 +104,7 @@
   {
     "id": 7,
     "price": [139, 85],
-    "allergies": ["Lactose"],
+    "allergies": ["LactoseFree"],
     "meatType": ["Chicken", "Pork"],
     "language": [
       {
@@ -121,7 +121,7 @@
   {
     "id": 8,
     "price": [159],
-    "allergies": ["Lactose"],
+    "allergies": ["GlutenFree", "LactoseFree"],
     "meatType": ["Fish"],
     "language": [
       {
@@ -138,7 +138,7 @@
   {
     "id": 9,
     "price": [169],
-    "allergies": ["Lactose"],
+    "allergies": ["LactoseFree"],
     "meatType": ["Chicken"],
     "language": [
       {
@@ -172,7 +172,7 @@
   {
     "id": 11,
     "price": [259],
-    "allergies": ["Gluten"],
+    "allergies": ["GlutenFree"],
     "meatType": ["Beef"],
     "language": [
       {
