@@ -162,3 +162,16 @@ label {
     }
   }
   
+  @media screen and (min-width:560px) and (max-width:800px){
+    body{
+        display: flex;
+        position: relative;
+    }
+
+    h1{
+        display: flex;
+        position: relative;
+        right: 250px;
+        padding-top: 50px;
+    }
+  }
