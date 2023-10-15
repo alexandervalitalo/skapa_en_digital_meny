@@ -41,6 +41,19 @@ body {
     padding-right: 20px;
 }
 
+select{
+    background-color: rgba(0, 0, 0, 0.73);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px white solid;
+    border-radius: 1em;
+    padding: 0.2em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
 
 .filter-header {
     background-color: white; 
@@ -100,12 +113,13 @@ h1 {
 }
 
 button {
-    background-color: white;
+    background-color: #ffffff;
     border: none;
     margin: 5px 0px 0px 20px;
-    color: grey;
+    color: #000000;
     font-size: 13px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: normal;
 }
 
 button:hover {
@@ -163,15 +177,14 @@ label {
   }
   
   @media screen and (min-width:560px) and (max-width:800px){
-    body{
-        display: flex;
-        position: relative;
-    }
-
     h1{
         display: flex;
         position: relative;
         right: 250px;
         padding-top: 50px;
+    }
+
+    .menu-controls{
+        padding-bottom: 50px;
     }
   }
