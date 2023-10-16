@@ -98,7 +98,7 @@ h1 {
     margin-left: 260px;
     margin-right: 50px;
     padding-top: 120px;
-    font-family:cursive;
+    font-family: cursive;
 }
 
 #border-class{
@@ -162,6 +162,7 @@ label {
       margin-left: 0;
       margin-right: 0;
       font-size: 13px;
+      font-family: sans-serif;
     }
 
     h1{
