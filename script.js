@@ -9,8 +9,6 @@ const menuAllDishes = await fetchData(menuUrl); //Saves json data to local array
 const language = "./language.json"; //fileName to load
 const changeLangOtherText = await fetchData(language); //Saves json data to local array, await forces fetchData to be done before continuing
 
-let changeLangOtherDOM = []; // Array of all DOM-elements that will change language, except dishes
-
 //DOM-data
 const display = document.querySelector("#dishes-data");
 const orderDiv = document.querySelector("#my-order");
@@ -43,6 +41,8 @@ const allergies = document.querySelectorAll("h3")[1];
 const labelGluten = document.querySelectorAll("label")[8];
 const labelLactose = document.querySelectorAll("label")[9];
 
+let changeLangOtherDOM = []; // Array of all DOM-elements that will change language, except dishes
+
 changeLangOtherDOM.push(
   title,
   langWord,
@@ -65,47 +65,42 @@ changeLangOtherDOM.push(
 
 let currentDishes = menuAllDishes; //Copy info to another array that we want to filter
 let langNumber = 0; //sets the language to swedish at start
-/* --------------------------TEST------------------------------------ */
-let orderDishes = [];
-/* --------------------------TEST------------------------------------ */
+
+let orderDishes = []; //
 
 displayDishes(); //display all dishes at start
 
 //call this function to display the current filtered dishes
 function displayDishes() {
-  let menuDisplay = currentDishes
-    .map((object) => {
-      switch (
-        object.price.length //check how many prices a dish has
-      ) {
-        case 1: //display if dish has only one price
-          return `
-                <div id="dish${object.id}" class="dish">
-                    <br>
-                    <h3 class="dish-title">${object.language[langNumber].title} ${object.price[0]} ${object.id}kr</h3>
-                    <p class="dish-info">${object.language[langNumber].info}</p>
-                    <br>
-                </div>
-                `;
-          break;
-        case 2: //display if dish has two prices
-          return `
-                <div id="dish${object.id}" class="dish">
-                    <br>
-                    <h3 class="dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]} ${object.id}kr</h3>
-                    <p class="dish-info">${object.language[langNumber].info}</p>
-                    <br>
-                </div>
-                `;
-          break;
-      }
-    })
-    .join(""); //Removes the "," between each dish object caused by reading the json-file.
+  let menuDisplay = currentDishes.map((object) => {
+    switch (object.price.length) { //check how many prices a dish has
+      case 1: //display if dish has only one price
+        return `
+              <div id="dish${object.id}" class="dish">
+                  <br>
+                  <h3 class="dish-title">${object.language[langNumber].title} ${object.price[0]} kr</h3>
+                  <p class="dish-info">${object.language[langNumber].info}</p>
+                  <br>
+              </div>
+              `;
+        break;
+      case 2: //display if dish has two prices
+        return `
+              <div id="dish${object.id}" class="dish">
+                  <br>
+                  <h3 class="dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]} kr</h3>
+                  <p class="dish-info">${object.language[langNumber].info}</p>
+                  <br>
+              </div>
+              `;
+        break;
+    }
+  }).join(""); //Removes the "," between each dish object caused by reading the json-file.
   display.innerHTML = menuDisplay;
   /* --------------test---------------------------------------- */
   document.querySelectorAll(".dish").forEach((item) => {
     item.addEventListener("click", (event) => {
-      let inPos = item.id.substring(4, item.id.length);
+      let inPos = item.id.substring(4, item.id.length); //Get id:name and pick out the id:number 
       orderDishes.push(menuAllDishes[inPos - 1]);
       displayOrder();
     });
@@ -115,28 +110,24 @@ function displayDishes() {
 
 /*____________________TEST_____________________________________ */
 function displayOrder() {
-  let orderDisplay = orderDishes
-    .map((object) => {
-      switch (
-        object.price.length //check how many prices a dish has
-      ) {
-        case 1: //display if dish has only one price
-          return `
-                <div class="order-dish">
-                    <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]}kr</h4>
-                </div>
-                `;
-          break;
-        case 2: //display if dish has two prices
-          return `
-                <div class="order-dish">
-                    <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]}kr</h4>
-                </div>
-                `;
-          break;
-      }
-    })
-    .join(""); //Removes the "," between each dish object caused by reading the json-file.
+  let orderDisplay = orderDishes.map((object) => {
+    switch (object.price.length) { //check how many prices a dish has
+      case 1: //display if dish has only one price
+        return `
+              <div class="order-dish">
+                  <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]}kr</h4>
+              </div>
+              `;
+        break;
+      case 2: //display if dish has two prices
+        return `
+              <div class="order-dish">
+                  <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]}kr</h4>
+              </div>
+              `;
+        break;
+    }
+  }).join(""); //Removes the "," between each dish object caused by reading the json-file.
   orderDiv.innerHTML = orderDisplay;
 }
 /*____________________TEST_____________________________________ */
@@ -146,14 +137,12 @@ function filterLogic() {
   currentDishes = menuAllDishes; //reset all dishes
 
   //filter meat choices first, if any are checked
-  if (
-    checkVeg.checked ||
+  if (checkVeg.checked ||
     checkBeef.checked ||
     checkChicken.checked ||
     checkPork.checked ||
     checkFish.checked ||
-    checkSeafood.checked
-  ) {
+    checkSeafood.checked){
     filterMeat();
   }
 
@@ -293,7 +282,7 @@ clearFilter.addEventListener("click", () => {
 
 //Handels language selection and display the new choosen language
 langSelect.addEventListener("change", () => {
-  switch (langSelect.value) {
+  switch(langSelect.value) {
     case "svenska":
       langNumber = 0;
       htmlTag.setAttribute("lang", "sv");
@@ -319,22 +308,18 @@ function displayLangOtherDOM() {
 //Handels sorting menu after price (or unsorted)
 sortSelect.addEventListener("change", () => {
   let tempAray;
-  switch (sortSelect.value) {
+  switch(sortSelect.value) {
     case "unsorted":
       //display dishes in start order, if id a is bigger than id b then switch a and b (1) else do not switch a and b (-1)
       tempAray = currentDishes.slice().sort((a, b) => (a.id > b.id ? 1 : -1));
       break;
     case "ascending":
       //display dishes in ascending order, if price a is bigger than price b then switch
-      tempAray = currentDishes
-        .slice()
-        .sort((a, b) => (a.price[0] > b.price[0] ? 1 : -1));
+      tempAray = currentDishes.slice().sort((a, b) => (a.price[0] > b.price[0] ? 1 : -1));
       break;
     case "descending":
       //display dishes in descending order, if price a is lower than price b then switch
-      tempAray = currentDishes
-        .slice()
-        .sort((a, b) => (a.price[0] < b.price[0] ? 1 : -1));
+      tempAray = currentDishes.slice().sort((a, b) => (a.price[0] < b.price[0] ? 1 : -1));
       break;
   }
   currentDishes = tempAray;
