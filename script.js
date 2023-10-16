@@ -14,6 +14,7 @@ let changeLangOtherDOM = []; // Array of all DOM-elements that will change langu
 //DOM-data
 const display = document.querySelector("#dishes-data");
 const langSelect = document.querySelector("#language-select");
+const sortSelect = document.querySelector("#sort-select");
 const htmlTag = document.querySelector("html");
 const checkVeg = document.querySelector("#filter-veg");
 const checkBeef = document.querySelector("#filter-beef");
@@ -273,3 +274,26 @@ function displayLangOtherDOM() {
       changeLangOtherText[i].language[langNumber];
   }
 }
+
+//Handels sorting menu after price (or unsorted)
+sortSelect.addEventListener("change", () => {
+  let tempAray;
+  switch (sortSelect.value) {
+    case "unsorted":
+      //display dishes in start order, if id a is bigger than id b then switch a and b (1) else do not switch a and b (-1)
+      tempAray = currentDishes.sort((a, b) => (a.id > b.id ? 1 : -1)); 
+      currentDishes = tempAray;
+      break;
+    case "ascending":
+      //display dishes in ascending order, if price a is bigger than price b then switch
+      tempAray = currentDishes.sort((a, b) => (a.price[0] > b.price[0] ? 1 : -1));
+      currentDishes = tempAray;
+    break;
+    case "descending":
+      //display dishes in descending order, if price a is lower than price b then switch
+      tempAray = currentDishes.sort((a, b) => (a.price[0] < b.price[0] ? 1 : -1));
+      currentDishes = tempAray;
+    break;
+  }
+  displayDishes();
+});
