@@ -1,0 +1,86 @@
+[
+  {
+    "id": "title",
+    "language": ["Meny", "Menu"]
+  },
+
+  {
+    "id": "langWord",
+    "language": ["Språk:", "Language:"]
+  },
+
+  {
+    "id": "swedish",
+    "language": ["Svenska", "Swedish"]
+  },
+
+  {
+    "id": "sortWord",
+    "language": ["Sortera:", "Sort:"]
+  },
+
+  {
+    "id": "priceRising",
+    "language": ["Pris stigande", "Price rising"]
+  },
+
+  {
+    "id": "priceFalling",
+    "language": ["Pris fallande", "Price falling"]
+  },
+
+  {
+    "id": "clearFilter",
+    "language": ["Återställ filter", "Restore filter"]
+  },
+
+  {
+    "id": "meatDishes",
+    "language": ["Kötträtter", "Meat dishes"]
+  },
+
+  {
+    "id": "labelVeg",
+    "language": ["Vegetariskt", "Vegetarian"]
+  },
+
+  {
+    "id": "labelBeef",
+    "language": ["Nöt", "Beef"]
+  },
+
+  {
+    "id": "labelChicken",
+    "language": ["Kyckling", "Chicken"]
+  },
+
+  {
+    "id": "labelPork",
+    "language": ["Fläsk", "Pork"]
+  },
+
+  {
+    "id": "labelFish",
+    "language": ["Fisk", "Fish"]
+  },
+
+  {
+    "id": "labelSeafood",
+    "language": ["Skaldjur", "Seafood"]
+  },
+
+  {
+    "id": "allergies",
+    "language": ["Allergi", "Allergies"]
+  },
+
+  {
+    "id": "labelGluten",
+    "language": ["Glutenfritt", "Gluten free"]
+  },
+
+  {
+    "id": "labelLactose",
+    "language": ["Laktosfritt", "Lactose free"]
+  }
+]
