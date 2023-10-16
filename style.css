@@ -41,6 +41,19 @@ body {
     padding-right: 20px;
 }
 
+select{
+    background-color: rgba(0, 0, 0, 0.73);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px white solid;
+    border-radius: 1em;
+    padding: 0.2em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
 
 .filter-header {
     background-color: white; 
@@ -100,12 +113,13 @@ h1 {
 }
 
 button {
-    background-color: white;
+    background-color: #ffffff;
     border: none;
     margin: 5px 0px 0px 20px;
-    color: grey;
+    color: #000000;
     font-size: 13px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: normal;
 }
 
 button:hover {
@@ -125,3 +139,47 @@ label {
     justify-content: flex-end;
     flex-direction: column;
 }
+
+@media screen and (min-width: 320px) and (max-width: 599px) {
+    .header {
+      flex-direction: row;
+    }
+  
+    .menu-controls {
+      display: flex;
+      position: absolute;
+      right: 50px;
+      padding-top: 45px;
+      font-size: 15px;
+      padding-right: 10px;
+    }
+  
+    .filter-section {
+      position: relative;
+    }
+  
+    .menu {
+      margin-left: 0;
+      margin-right: 0;
+      font-size: 13px;
+    }
+
+    h1{
+        font-size: 50px;
+        padding-bottom: 70px;
+        padding-right: 90px;
+    }
+
+    img{
+        width: 90px;
+        margin-right: 20px;
+    }
+  }
+  
+  @media screen and (min-width:600px) and (max-width:80ch){
+    h1{
+        display: flex;
+        position: relative;
+        padding-top: 5px;
+    }
+  }
