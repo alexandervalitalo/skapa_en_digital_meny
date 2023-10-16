@@ -140,7 +140,7 @@ label {
     flex-direction: column;
 }
 
-@media screen and (min-width: 320px) and (max-width: 800px) {
+@media screen and (min-width: 320px) and (max-width: 599px) {
     .header {
       flex-direction: row;
     }
@@ -149,7 +149,7 @@ label {
       display: flex;
       position: absolute;
       right: 50px;
-      padding-top: 50px;
+      padding-top: 45px;
       font-size: 15px;
       padding-right: 10px;
     }
@@ -176,15 +176,10 @@ label {
     }
   }
   
-  @media screen and (min-width:560px) and (max-width:800px){
+  @media screen and (min-width:600px) and (max-width:80ch){
     h1{
         display: flex;
         position: relative;
-        right: 250px;
-        padding-top: 50px;
-    }
-
-    .menu-controls{
-        padding-bottom: 50px;
+        padding-top: 5px;
     }
   }
