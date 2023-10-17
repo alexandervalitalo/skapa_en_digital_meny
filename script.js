@@ -68,7 +68,8 @@ changeLangOtherDOM.push(
 let currentDishes = menuAllDishes; //Copy info to another array that we want to filter
 let langNumber = 0; //sets the language to swedish at start
 
-let orderDishes = []; //
+let orderDishes = []; //Holds choosen dishes
+let amountOrder = []; //Holds number of each choosen dishes
 
 displayDishes(); //display all dishes at start
 
@@ -100,23 +101,39 @@ function displayDishes() {
   }).join(""); //Removes the "," between each dish object caused by reading the json-file.
   display.innerHTML = menuDisplay;
 
-  document.querySelectorAll(".dish").forEach((item) => {
-    item.addEventListener("click", (event) => {
+  document.querySelectorAll(".dish").forEach((item) => { //Add addEventListener to all dishes in menu 
+    item.addEventListener("click", () => {
       let inPos = item.id.substring(4, item.id.length); //Get id:name and pick out the id:number 
-      orderDishes.push(menuAllDishes[inPos - 1]);
+      
+      let dishExist = false;
+      
+      for(let i = 0; i < orderDishes.length; i++){ 
+        //if dish is already in orderDishes[] add 1 to amountOrder[]  
+        if(orderDishes[i].id === menuAllDishes[inPos - 1].id){
+          dishExist = true;
+          amountOrder[i]++;
+        }
+      }
+
+      //if dish is not already in orderDishes[], add it to it and set coresponding amountOrder to 1
+      if(!dishExist){
+        orderDishes.push(menuAllDishes[inPos - 1]);
+        amountOrder.push(1);
+      }
+
       displayOrder();
     });
   });
 }
 
-//Handels display and create of orders
+//Handles display and create of orders
 function displayOrder() {
-  let orderDisplay = orderDishes.map((object) => {
+  let orderDisplay = orderDishes.map((object, index) => { //object holds the dish objects. index tracks object index (iteration count)
     switch (object.price.length) { //check how many prices a dish has
       case 1: //display if dish has only one price
         return `
               <div class="order-dish">
-                  <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]}kr</h4>
+                  <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr ${amountOrder[index]} st</h4>
                   <button class="order-buttons">X</button>
               </div>
               `;
@@ -124,7 +141,7 @@ function displayOrder() {
       case 2: //display if dish has two prices
         return `
               <div class="order-dish">
-                  <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]}kr</h4>
+                  <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]} kr ${amountOrder[index]} st</h4>
                   <button class="order-buttons">X</button>
               </div>
               `;
@@ -137,12 +154,12 @@ function displayOrder() {
   orderBtns.forEach((item) => {
     item.addEventListener("click", (event) => {
       const buttonIndex = Array.from(orderBtns).indexOf(event.target); //Get the index position of the button in orderBtns array
-      orderDishes.splice(buttonIndex, 1); //Remove the element on the choosen index
+      orderDishes.splice(buttonIndex, 1); //Remove the element on the chosen index
+      amountOrder.splice(buttonIndex, 1); //Remove the amount number on the chosen index
       displayOrder();
     });
   });
 }
-/*____________________TEST_____________________________________ */
 
 //handles multiple filters in the right order and displays filtered dishes
 function filterLogic() {
@@ -292,8 +309,10 @@ clearFilter.addEventListener("click", () => {
   displayDishes();
 });
 
+//empty orders
 clearOrder.addEventListener("click", () => {
   orderDishes = [];
+  amountOrder = [];
   displayOrder();
 });
 
