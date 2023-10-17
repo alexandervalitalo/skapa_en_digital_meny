@@ -12,6 +12,8 @@ const changeLangOtherText = await fetchData(language); //Saves json data to loca
 //DOM-data
 const display = document.querySelector("#dishes-data");
 const orderDiv = document.querySelector("#my-order");
+const orderTitle = document.querySelector("#order-title");
+const clearOrder = document.querySelector("#clear-order"); 
 const langSelect = document.querySelector("#language-select");
 const sortSelect = document.querySelector("#sort-select");
 const htmlTag = document.querySelector("html");
@@ -29,7 +31,7 @@ const swedish = document.querySelectorAll("option")[0];
 const sortWord = document.querySelectorAll("label")[1];
 const priceRising = document.querySelectorAll("option")[3];
 const priceFalling = document.querySelectorAll("option")[4];
-const clearFilter = document.querySelector("button");
+const clearFilter = document.querySelector("#filter-button");
 const meatDishes = document.querySelectorAll("h3")[0];
 const labelVeg = document.querySelectorAll("label")[2];
 const labelBeef = document.querySelectorAll("label")[3];
@@ -97,7 +99,7 @@ function displayDishes() {
     }
   }).join(""); //Removes the "," between each dish object caused by reading the json-file.
   display.innerHTML = menuDisplay;
-  /* --------------test---------------------------------------- */
+
   document.querySelectorAll(".dish").forEach((item) => {
     item.addEventListener("click", (event) => {
       let inPos = item.id.substring(4, item.id.length); //Get id:name and pick out the id:number 
@@ -105,10 +107,9 @@ function displayDishes() {
       displayOrder();
     });
   });
-  /* --------------test---------------------------------------- */
 }
 
-/*____________________TEST_____________________________________ */
+//Handels display and create of orders
 function displayOrder() {
   let orderDisplay = orderDishes.map((object) => {
     switch (object.price.length) { //check how many prices a dish has
@@ -116,6 +117,7 @@ function displayOrder() {
         return `
               <div class="order-dish">
                   <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]}kr</h4>
+                  <button class="order-buttons">X</button>
               </div>
               `;
         break;
@@ -123,12 +125,22 @@ function displayOrder() {
         return `
               <div class="order-dish">
                   <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]}kr</h4>
+                  <button class="order-buttons">X</button>
               </div>
               `;
         break;
     }
   }).join(""); //Removes the "," between each dish object caused by reading the json-file.
   orderDiv.innerHTML = orderDisplay;
+
+  const orderBtns = document.querySelectorAll(".order-buttons"); //Array with all individual remove buttons
+  orderBtns.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      const buttonIndex = Array.from(orderBtns).indexOf(event.target); //Get the index position of the button in orderBtns array
+      orderDishes.splice(buttonIndex, 1); //Remove the element on the choosen index
+      displayOrder();
+    });
+  });
 }
 /*____________________TEST_____________________________________ */
 
@@ -278,6 +290,11 @@ clearFilter.addEventListener("click", () => {
 
   currentDishes = menuAllDishes;
   displayDishes();
+});
+
+clearOrder.addEventListener("click", () => {
+  orderDishes = [];
+  displayOrder();
 });
 
 //Handels language selection and display the new choosen language
