@@ -12,8 +12,6 @@ const changeLangOtherText = await fetchData(language); //Saves json data to loca
 //DOM-data
 const display = document.querySelector("#dishes-data");
 const orderDiv = document.querySelector("#my-order");
-const orderTitle = document.querySelector("#order-title");
-const clearOrder = document.querySelector("#clear-order"); 
 const langSelect = document.querySelector("#language-select");
 const sortSelect = document.querySelector("#sort-select");
 const htmlTag = document.querySelector("html");
@@ -25,6 +23,7 @@ const checkFish = document.querySelector("#filter-fish");
 const checkSeafood = document.querySelector("#filter-seafood");
 const checkGluten = document.querySelector("#filter-gluten");
 const checkLactose = document.querySelector("#filter-lactose");
+
 const title = document.querySelector("h1");
 const langWord = document.querySelectorAll("label")[0];
 const swedish = document.querySelectorAll("option")[0];
@@ -42,6 +41,8 @@ const labelSeafood = document.querySelectorAll("label")[7];
 const allergies = document.querySelectorAll("h3")[1];
 const labelGluten = document.querySelectorAll("label")[8];
 const labelLactose = document.querySelectorAll("label")[9];
+const orderTitle = document.querySelector("#order-title");
+const clearOrder = document.querySelector("#clear-order"); 
 
 let changeLangOtherDOM = []; // Array of all DOM-elements that will change language, except dishes
 
@@ -62,7 +63,9 @@ changeLangOtherDOM.push(
   labelSeafood,
   allergies,
   labelGluten,
-  labelLactose
+  labelLactose,
+  orderTitle,
+  clearOrder
 );
 
 let currentDishes = menuAllDishes; //Copy info to another array that we want to filter
@@ -101,6 +104,11 @@ function displayDishes() {
   }).join(""); //Removes the "," between each dish object caused by reading the json-file.
   display.innerHTML = menuDisplay;
 
+  clickToOrder();
+}
+
+//Handles order choices
+function clickToOrder(){
   document.querySelectorAll(".dish").forEach((item) => { //Add addEventListener to all dishes in menu 
     item.addEventListener("click", () => {
       let inPos = item.id.substring(4, item.id.length); //Get id:name and pick out the id:number 
@@ -134,7 +142,9 @@ function displayOrder() {
         return `
               <div class="order-dish">
                   <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr ${amountOrder[index]} st</h4>
-                  <button class="order-buttons">X</button>
+                  <button class="minus-dish-btn">-</button>
+                  <button class="plus-dish-btn">+</button>
+                  <button class="remove-dish-btn">X</button>
               </div>
               `;
         break;
@@ -142,7 +152,9 @@ function displayOrder() {
         return `
               <div class="order-dish">
                   <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]} kr ${amountOrder[index]} st</h4>
-                  <button class="order-buttons">X</button>
+                  <button class="minus-dish-btn">-</button>
+                  <button class="plus-dish-btn">+</button>
+                  <button class="remove-dish-btn">X</button>
               </div>
               `;
         break;
@@ -150,7 +162,39 @@ function displayOrder() {
   }).join(""); //Removes the "," between each dish object caused by reading the json-file.
   orderDiv.innerHTML = orderDisplay;
 
-  const orderBtns = document.querySelectorAll(".order-buttons"); //Array with all individual remove buttons
+  orderButtonFunctionality();
+}
+
+//Handles removal of dish from order section
+function orderButtonFunctionality(){
+  /******************************************************Minus Button*******************************************************************/
+  const minusBtns = document.querySelectorAll(".minus-dish-btn"); //Array with all minus buttons
+  minusBtns.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      const buttonIndex = Array.from(minusBtns).indexOf(event.target); //Get the index position of the button in minusBtns array
+
+      if(amountOrder[buttonIndex] === 1){ //If there is only 1 instance of the dish, remove it
+        orderDishes.splice(buttonIndex, 1); //Remove the element on the chosen index
+        amountOrder.splice(buttonIndex, 1); //Remove the amount number on the chosen index
+      }else{
+        amountOrder[buttonIndex]--; //else decrease the dish count by 1
+      }
+      displayOrder();
+    });
+  });
+
+  /******************************************************Plus Button*******************************************************************/
+  const plusBtns = document.querySelectorAll(".plus-dish-btn"); //Array with all plus buttons
+  plusBtns.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      const buttonIndex = Array.from(plusBtns).indexOf(event.target); //Get the index position of the button in plusBtns array
+      amountOrder[buttonIndex]++; //increase the dish count by 1
+      displayOrder();
+    });
+  });
+  
+  /******************************************************Remove Button*******************************************************************/
+  const orderBtns = document.querySelectorAll(".remove-dish-btn"); //Array with all individual remove buttons
   orderBtns.forEach((item) => {
     item.addEventListener("click", (event) => {
       const buttonIndex = Array.from(orderBtns).indexOf(event.target); //Get the index position of the button in orderBtns array
@@ -331,6 +375,7 @@ langSelect.addEventListener("change", () => {
 
   displayLangOtherDOM();
   displayDishes();
+  displayOrder();
 });
 
 //Changes the text on everything except dishes

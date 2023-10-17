@@ -82,5 +82,15 @@
   {
     "id": "labelLactose",
     "language": ["Laktosfritt", "Lactose free"]
+  },
+
+  {
+    "id": "orderTitle",
+    "language": ["Beställning", "Order"]
+  },
+
+  {
+    "id": "clearOrder",
+    "language": ["Rensa", "Clear"]
   }
 ]
