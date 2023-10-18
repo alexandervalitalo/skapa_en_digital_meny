@@ -13,7 +13,7 @@
     <title>Digital Menu</title>
   </head>
   <body>
-    <div class="header">
+    <header>
       <div class="logo">
         <img src="./images/lucky_duck.png" alt="Din Logotyp" />
       </div>
@@ -37,69 +37,76 @@
           </select>
         </div>
       </section>
-    </div>
+    </header>
 
-    <section class="filter-section">
-      <div class="filter-checkboxes">
-        <div class="filter">
-          <h2>Filter</h2>
-          <button id="filter-button">Återställ filter</button>
+    <section class="content">
+      <div class="sidebar">
+        <div class="filter-section">
+          <div class="filter">
+            <h2>Filter</h2>
+            <button id="filter-button">Återställ filter</button>
+          </div>
+          <div class="filter-checkboxes">
+            <div class="meat-filter">
+              <div class="filter-header">
+                <h3 class="meat-h3">Kötträtter</h3>
+              </div>
+              <div class="filter-checkbox">
+                <input type="checkbox" id="filter-veg" />
+                <label for="filter-veg">Vegetariskt</label>
+              </div>
+              <div class="filter-checkbox">
+                <input type="checkbox" id="filter-beef" />
+                <label for="filter-beef">Nöt</label>
+              </div>
+              <div class="filter-checkbox">
+                <input type="checkbox" id="filter-chicken" />
+                <label for="filter-chicken">Kyckling</label>
+              </div>
+              <div class="filter-checkbox">
+                <input type="checkbox" id="filter-pork" />
+                <label for="filter-pork">Fläsk</label>
+              </div>
+              <div class="filter-checkbox">
+                <input type="checkbox" id="filter-fish" />
+                <label for="filter-fish">Fisk</label>
+              </div>
+              <div class="filter-checkbox">
+                <input type="checkbox" id="filter-seafood" />
+                <label for="filter-seafood">Skaldjur</label>
+              </div>
+            </div>
+            <div class="allergies-filter">
+              <div class="filter-header" id="allergies-id">
+                <h3 class="allergies-h3">Allergi</h3>
+              </div>
+              <div class="filter-checkbox">
+                <input type="checkbox" id="filter-gluten" />
+                <label for="filter-gluten">Glutenfritt</label>
+              </div>
+              <div class="filter-checkbox">
+                <input type="checkbox" id="filter-lactose" />
+                <label for="filter-lactose">Laktosfritt</label>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="filter-header" id="border-class">
-          <h3 class="meat-h3">Kötträtter</h3>
-        </div>
-        <div class="filter-checkbox">
-          <input type="checkbox" id="filter-veg" />
-          <label for="filter-veg">Vegetariskt</label>
-        </div>
-        <div class="filter-checkbox">
-          <input type="checkbox" id="filter-beef" />
-          <label for="filter-beef">Nöt</label>
-        </div>
-        <div class="filter-checkbox">
-          <input type="checkbox" id="filter-chicken" />
-          <label for="filter-chicken">Kyckling</label>
-        </div>
-        <div class="filter-checkbox">
-          <input type="checkbox" id="filter-pork" />
-          <label for="filter-pork">Fläsk</label>
-        </div>
-        <div class="filter-checkbox">
-          <input type="checkbox" id="filter-fish" />
-          <label for="filter-fish">Fisk</label>
-        </div>
-        <div class="filter-checkbox">
-          <input type="checkbox" id="filter-seafood" />
-          <label for="filter-seafood">Skaldjur</label>
-        </div>
-        <div class="filter-header" id="border-class">
-          <h3 class="allergies-h3">Allergi</h3>
-        </div>
-        <div class="filter-checkbox">
-          <input type="checkbox" id="filter-gluten" />
-          <label for="filter-gluten">Glutenfritt</label>
-        </div>
-        <div class="filter-checkbox">
-          <input type="checkbox" id="filter-lactose" />
-          <label for="filter-lactose">Laktosfritt</label>
+
+        <!-- This is where your order is displayed-->
+        <div class="order">
+          <div class="order-word-and-button">
+            <h2 id="order-title">Beställning</h2>
+            <button id="clear-order">Rensa</button>
+          </div>
+          <div id="my-order"></div>
         </div>
       </div>
-    </section>
 
-    <!-- This is where your order is displayed-->
-    <section class="order">
-      <div class="order-word-and-button">
-        <h2 id="order-title">Beställning</h2>
-        <button id="clear-order">Rensa</button>
+      <!-- This is where you can load menu items from JSON data -->
+      <div class="menu">
+        <div id="dishes-data"></div>
       </div>
-      <div id="my-order"></div>
-     </section>
-
-    <!-- This is where you can load menu items from JSON data -->
-    <section class="menu">
-      <div id="dishes-data"></div>
     </section>
-
     <script src="script.js" type="module"></script>
   </body>
 </html>
