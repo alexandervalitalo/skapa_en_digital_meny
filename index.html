@@ -46,7 +46,7 @@
           <button id="filter-button">Återställ filter</button>
         </div>
         <div class="filter-header" id="border-class">
-          <h3>Kötträtter</h3>
+          <h3 class="meat-h3">Kötträtter</h3>
         </div>
         <div class="filter-checkbox">
           <input type="checkbox" id="filter-veg" />
@@ -73,7 +73,7 @@
           <label for="filter-seafood">Skaldjur</label>
         </div>
         <div class="filter-header" id="border-class">
-          <h3>Allergi</h3>
+          <h3 class="allergies-h3">Allergi</h3>
         </div>
         <div class="filter-checkbox">
           <input type="checkbox" id="filter-gluten" />
@@ -86,16 +86,18 @@
       </div>
     </section>
 
+    <!-- This is where your order is displayed-->
+    <section class="order">
+      <div class="order-word-and-button">
+        <h2 id="order-title">Beställning</h2>
+        <button id="clear-order">Rensa</button>
+      </div>
+      <div id="my-order"></div>
+     </section>
+
     <!-- This is where you can load menu items from JSON data -->
     <section class="menu">
       <div id="dishes-data"></div>
-    </section>
-
-    <!-- This is where your order is displayed-->
-    <section class="order">
-      <h2 id="order-title">Beställning</h2>
-      <button id="clear-order">Rensa</button>
-      <div id="my-order"></div>
     </section>
 
     <script src="script.js" type="module"></script>

@@ -142,9 +142,11 @@ function displayOrder() {
         return `
               <div class="order-dish">
                   <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr ${amountOrder[index]} st</h4>
-                  <button class="minus-dish-btn">-</button>
-                  <button class="plus-dish-btn">+</button>
-                  <button class="remove-dish-btn">X</button>
+                  <div class="dish-button">
+                    <button class="minus-dish-btn">-</button>
+                    <button class="plus-dish-btn">+</button>
+                    <button class="remove-dish-btn">x</button>
+                  </div>
               </div>
               `;
         break;
@@ -152,9 +154,11 @@ function displayOrder() {
         return `
               <div class="order-dish">
                   <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]} kr ${amountOrder[index]} st</h4>
-                  <button class="minus-dish-btn">-</button>
-                  <button class="plus-dish-btn">+</button>
-                  <button class="remove-dish-btn">X</button>
+                  <div class="dish-button">
+                    <button class="minus-dish-btn">-</button>
+                    <button class="plus-dish-btn">+</button>
+                    <button class="remove-dish-btn">x</button>
+                  </div>
               </div>
               `;
         break;
