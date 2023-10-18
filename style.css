@@ -1,3 +1,15 @@
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-image: url("./images/woodwall.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding-bottom: 70px;
+  width: 100vw;
+  height: 100vh;
+}
+
 body,
 h1,
 h2,
@@ -9,15 +21,7 @@ li {
   padding: 0;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-image: url("./images/woodwall.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-bottom: 70px;
-}
-
-.header {
+header {
   background-color: white;
   padding: 10px;
   display: flex;
@@ -31,9 +35,20 @@ body {
   border: 2px solid rgba(0, 0, 0, 0.39);
 }
 
+h1 {
+  font-family: "Permanent Marker", cursive;
+  font-size: 4rem;
+}
+
 .logo img {
-  max-height: 110px;
+  height: 110px;
+  width: 110px;
+}
+
+.menu-controls {
   display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
 }
 
 .dropdown {
@@ -50,11 +65,39 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2px white solid;
+  border: 2px solid white;
   border-radius: 1em;
   padding: 0.2em;
   cursor: pointer;
   transition: background 0.3s;
+}
+
+button {
+  background-color: #ffffff;
+  border: none;
+  margin: 5px 0px 0px 20px;
+  color: #000000;
+  font-size: 13px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+button:hover {
+  border-bottom: 1px solid grey;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 122px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-width: 15rem;
 }
 
 .filter-header {
@@ -62,20 +105,12 @@ select {
   padding: 10px;
 }
 
-h1 {
-  font-family: "Permanent Marker", cursive;
-  font-size: 4rem;
-}
-
 .filter-section {
   background-color: white;
   display: flex;
-  position: absolute;
-  top: 122px;
   flex-direction: column;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
   border: 2px solid rgba(0, 0, 0, 0.39);
+  border-top: none;
   padding: 15px 25px 15px 15px;
 }
 
@@ -94,15 +129,15 @@ h1 {
   margin-right: 5px;
 }
 
-/*menu ska ändras men fick sätta in detta så länge så vi ser texten från JavaScripten*/
 .menu {
-  margin-left: 260px;
-  margin-right: 50px;
-  padding-top: 120px;
+  max-width: 80ch;
+  min-width: 320px;
+  margin-right: 2%;
+  margin-left: 10px;
   font-family: cursive;
 }
 
-#border-class {
+#allergies-id {
   border-top: 1px solid rgba(0, 0, 0, 0.377);
   margin-top: 20px;
 }
@@ -110,78 +145,119 @@ h1 {
 .dish {
   background-color: rgba(255, 255, 255, 0.87);
   padding-left: 20px;
+  padding-right: 20px;
   margin: 20px 0px;
+  cursor: pointer;
 }
 
-button {
-  background-color: #ffffff;
-  border: none;
-  margin: 5px 0px 0px 20px;
-  color: #000000;
-  font-size: 13px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: normal;
-}
-
-button:hover {
-  border-bottom: 1px solid grey;
+.dish:hover {
+  border: 1px solid grey;
 }
 
 .filter {
   display: flex;
+  padding-left: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.377);
+  padding-bottom: 10px;
 }
 
 label {
   padding-right: 5px;
 }
 
-.menu-controls {
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
+input[type="checkbox"] {
+  cursor: pointer;
 }
 
-@media screen and (min-width: 320px) and (max-width: 599px) {
-  .header {
-    flex-direction: row;
-  }
+.order {
+  background-color: white;
+  padding: 15px 25px 15px 15px;
+  border: 2px solid rgba(0, 0, 0, 0.39);
+  margin-top: 10px;
+}
 
-  .menu-controls {
-    display: flex;
-    position: absolute;
-    right: 50px;
-    padding-top: 45px;
-    font-size: 15px;
-    padding-right: 10px;
-  }
+.order-word-and-button {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.377);
+  padding-bottom: 10px;
+}
 
-  .filter-section {
-    position: relative;
+#my-order {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.order-dish {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+}
+
+.minus-dish-btn,
+.plus-dish-btn,
+.remove-dish-btn {
+  padding: 0;
+  border: 1px solid grey;
+  width: 25px;
+  height: 25px;
+  line-height: 0px;
+  margin: 0 10px 0 5px;
+  border-radius: 20%;
+}
+
+.remove-dish-btn {
+  background-color: rgb(249, 124, 124);
+}
+
+h4 {
+  font-weight: normal;
+  margin-bottom: 7px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 610px) {
+  .content {
+    flex-direction: column;
+    top: 210px;
   }
 
   .menu {
-    margin-left: 0;
-    margin-right: 0;
-    font-size: 13px;
-    font-family: sans-serif;
+    margin: 0;
   }
 
-  h1 {
-    font-size: 50px;
-    padding-bottom: 70px;
-    padding-right: 90px;
+  .dish {
+    padding-left: 10px;
   }
 
-  img {
-    width: 90px;
-    margin-right: 20px;
+  .filter-checkboxes {
+    flex-direction: row;
   }
-}
 
-@media screen and (min-width: 600px) and (max-width: 80ch) {
-  h1 {
-    display: flex;
+  #allergies-id {
+    border-top: none;
+    margin-top: 0px;
+  }
+
+  header {
     position: relative;
-    padding-top: 5px;
+    flex-direction: column;
+    height: 200px;
+    margin: auto;
+    width: 99%;
+    padding: 2px 0 5px 0;
+  }
+
+  .logo img {
+    height: 80px;
+    width: 80px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    padding: 0;
+    margin: 0;
   }
 }
