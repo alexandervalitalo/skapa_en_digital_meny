@@ -176,7 +176,7 @@ input[type="checkbox"] {
   padding-bottom: 10px;
 }
 
-.minus-dish-btn, .plus-dish-btn, .remove-dish-btn {
+.minus-dish-btn, .plus-dish-btn, .remove-dish-btn, .toggle-price-btn {
   padding: 0;
   border: 1px solid grey;
   width: 25px;
@@ -188,6 +188,13 @@ input[type="checkbox"] {
 
 .remove-dish-btn {
   background-color: rgb(249, 124, 124);
+}
+
+#my-price {
+  display: flex;
+  gap: 10px;
+  padding: 10px 10px 0px 10px;
+
 }
 
 .menu {
