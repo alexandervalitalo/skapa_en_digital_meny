@@ -92,5 +92,10 @@
   {
     "id": "clearOrder",
     "language": ["Rensa", "Clear"]
+  },
+
+  {
+    "id": "priceTitle",
+    "language": ["Att betala: ", "To pay: "]
   }
 ]

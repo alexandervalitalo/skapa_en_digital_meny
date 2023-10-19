@@ -176,7 +176,7 @@ input[type="checkbox"] {
   padding-bottom: 10px;
 }
 
-.minus-dish-btn, .plus-dish-btn, .remove-dish-btn {
+.minus-dish-btn, .plus-dish-btn, .remove-dish-btn, .toggle-price-btn {
   padding: 0;
   border: 1px solid grey;
   width: 25px;

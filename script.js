@@ -12,6 +12,7 @@ const changeLangOtherText = await fetchData(language); //Saves json data to loca
 //DOM-data
 const display = document.querySelector("#dishes-data");
 const orderDiv = document.querySelector("#my-order");
+const toPay = document.querySelector("#to-pay");
 const langSelect = document.querySelector("#language-select");
 const sortSelect = document.querySelector("#sort-select");
 const htmlTag = document.querySelector("html");
@@ -42,7 +43,8 @@ const allergies = document.querySelectorAll("h3")[1];
 const labelGluten = document.querySelectorAll("label")[8];
 const labelLactose = document.querySelectorAll("label")[9];
 const orderTitle = document.querySelector("#order-title");
-const clearOrder = document.querySelector("#clear-order"); 
+const clearOrder = document.querySelector("#clear-order");
+const priceTitle = document.querySelector("#price-title");
 
 let changeLangOtherDOM = []; // Array of all DOM-elements that will change language, except dishes
 
@@ -65,7 +67,8 @@ changeLangOtherDOM.push(
   labelGluten,
   labelLactose,
   orderTitle,
-  clearOrder
+  clearOrder,
+  priceTitle
 );
 
 let currentDishes = menuAllDishes; //Copy info to another array that we want to filter
@@ -153,11 +156,12 @@ function displayOrder() {
       case 2: //display if dish has two prices
         return `
               <div class="order-dish">
-                  <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr / ${object.price[1]} kr ${amountOrder[index]} st</h4>
+                  <h4 class="order-dish-title">${object.language[langNumber].title} ${object.price[0]} kr ${amountOrder[index]} st</h4>
                   <div class="dish-button">
                     <button class="minus-dish-btn">-</button>
                     <button class="plus-dish-btn">+</button>
                     <button class="remove-dish-btn">x</button>
+                    <button class="toggle-price-btn"><i class="fa-solid fa-circle-half-stroke"></i></button>
                   </div>
               </div>
               `;
@@ -167,6 +171,7 @@ function displayOrder() {
   orderDiv.innerHTML = orderDisplay;
 
   orderButtonFunctionality();
+  calcOrderPrice();
 }
 
 //Handles removal of dish from order section
@@ -207,6 +212,15 @@ function orderButtonFunctionality(){
       displayOrder();
     });
   });
+}
+
+//calculates and displays total price of the order
+function calcOrderPrice(){
+  const totalPrice = orderDishes.reduce(function(total, object, index){
+    return total + (object.price[0] * amountOrder[index]); //to handle possible multiple instances of a dish 
+  }, 0); //"0" is the value "total" starts with
+
+  toPay.innerHTML = totalPrice + " kr";
 }
 
 //handles multiple filters in the right order and displays filtered dishes
