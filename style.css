@@ -218,6 +218,10 @@ input[type="checkbox"] {
 }
 
 @media screen and (min-width: 320px) and (max-width: 620px) {
+  body {
+    overflow-x: hidden;
+  }
+  
   h1 {
     font-size: 1.8rem;
     padding: 0;
